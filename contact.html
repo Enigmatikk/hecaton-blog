@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Hecaton</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #1a1625;
+            --terminal: #251b32;
+            --text: #f0e6ff;
+            --subtext: #cbb8ee;
+            --border: #ff9ecd;
+            --highlight: #b49aff;
+            --accent: #ffa6e6;
+            --glow: rgba(255, 166, 230, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg), #201b2d);
+            color: var(--text);
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            margin: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, var(--glow) 0%, transparent 25%),
+                radial-gradient(circle at 80% 80%, rgba(180, 154, 255, 0.1) 0%, transparent 25%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 40px;
+            width: 100%;
+            max-width: 900px;
+            border-bottom: 2px dashed var(--border);
+            margin-bottom: 60px;
+            position: relative;
+            background: rgba(37, 27, 50, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+        }
+
+        header::before {
+            content: '✧ hecaton ✧';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            color: var(--border);
+            opacity: 0.5;
+            font-size: 0.8em;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            animation: glow 3s infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        header h1 {
+            font-size: 4em;
+            background: linear-gradient(45deg, #ffa6e6, #b49aff, #ff9ecd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px var(--glow);
+            margin: 0 0 20px 0;
+            letter-spacing: -1px;
+            position: relative;
+        }
+
+        header p {
+            color: var(--highlight);
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin: 0;
+            text-shadow: 0 0 10px var(--glow);
+        }
+
+        main {
+            width: 100%;
+            max-width: 900px;
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .post {
+            background: rgba(37, 27, 50, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 60px;
+            border: 1px dashed var(--border);
+            box-shadow: 0 0 30px rgba(255, 166, 230, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .post::before {
+            content: '♡';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: var(--border);
+            opacity: 0;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .post:hover::before {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .post:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px var(--glow);
+            transform: translateY(-4px);
+        }
+
+        .post-date {
+            font-size: 0.9em;
+            color: var(--highlight);
+            margin-bottom: 20px;
+            opacity: 0.8;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            background: rgba(180, 154, 255, 0.1);
+        }
+
+        .post-content {
+            position: relative;
+        }
+
+        .post-content img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+            margin: 30px auto;
+            box-shadow: 0 5px 30px rgba(255, 166, 230, 0.2);
+            border: 1px solid var(--terminal);
+            transition: transform 0.3s ease;
+        }
+
+        .post:hover .post-content img {
+            transform: scale(1.02);
+        }
+
+        .post-content p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin: 25px 0;
+            color: var(--text);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .post-content p::before {
+            content: '❀';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            opacity: 0.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 1em;
+            color: var(--subtext);
+            width: 100%;
+            max-width: 900px;
+            border-top: 2px dashed var(--border);
+            margin-top: 60px;
+            position: relative;
+            background: rgba(37, 27, 50, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            animation: glow 3s infinite;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .social-links a {
+            color: var(--accent);
+            font-size: 1.6em;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0.8;
+            padding: 10px;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            border: 1px solid var(--accent);
+            opacity: 0;
+            transform: scale(1.2);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .social-links a:hover {
+            transform: scale(1.3) rotate(8deg);
+            color: var(--highlight);
+            opacity: 1;
+            background: rgba(180, 154, 255, 0.1);
+        }
+
+        ::selection {
+            background: var(--border);
+            color: var(--terminal);
+        }
+        /* Navigation Menu */
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .nav-menu a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255, 166, 230, 0.1);
+            border: 1px dashed var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 166, 230, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Search Bar */
+        .search-container {
+            margin: 0 auto 40px auto;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 12px 20px;
+            background: rgba(37, 27, 50, 0.8);
+            border: 1px dashed var(--border);
+            border-radius: 25px;
+            color: var(--text);
+            font-family: 'JetBrains Mono', monospace;
+            outline: none;
+        }
+
+        .search-bar:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px var(--glow);
+        }
+
+        /* Post Updates */
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .post-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 166, 230, 0.1);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            color: var(--accent);
+            border: 1px dashed var(--border);
+        }
+
+        /* Decorative Elements */
+        .decorative-dot {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: float 3s infinite ease-in-out;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Header Enhancements */
+        header h1::after {
+            content: '✧';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.5em;
+            color: var(--accent);
+            opacity: 0.8;
+        }
+
+        header h1::before {
+            content: '✧';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.5em;
+            color: var(--accent);
+            opacity: 0.8;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+            
+            header {
+                padding: 30px 20px;
+            }
+
+            header h1 {
+                font-size: 2.8em;
+            }
+
+            .post {
+                padding: 25px;
+            }
+
+            .post-content img {
+                height: 200px;
+            }
+        }
+        
+        .contact-container {
+            background: rgba(37, 27, 50, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px dashed var(--border);
+            box-shadow: 0 0 30px rgba(255, 166, 230, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(255, 166, 230, 0.1);
+            border: 1px dashed var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 166, 230, 0.2);
+            transform: translateX(10px);
+            box-shadow: 0 0 20px var(--glow);
+        }
+
+        .contact-link i {
+            font-size: 1.5em;
+            margin-right: 15px;
+            color: var(--accent);
+        }
+
+        .contact-link span {
+            font-size: 1.1em;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--glow);
+        }
+
+        .contact-description {
+            text-align: center;
+            color: var(--subtext);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hecaton</h1>
+        <p>Reverse Engineering, Cyber Forensics & Nerd Stuff</p>
+        <nav class="nav-menu">
+            <a href="index.html">✧ Home</a>
+            <a href="about.html">✧ About</a>
+            <a href="projects.html">✧ Projects</a>
+            <a href="contact.html">✧ Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="contact-container">
+            <h2 class="section-title">✧ Connect With Me ✧</h2>
+            <p class="contact-description">Feel free to reach out through any of these platforms. I'm always open to interesting conversations and collaborations!</p>
+            
+            <div class="contact-links">
+
+                
+                <a href="https://github.com/enigmatikk" class="contact-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                
+                <a href="https://twitter.com/enigmatikk_" class="contact-link" target="_blank">
+                    <i class="fab fa-x-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+                
+                <a href="https://discord.com" class="contact-link" target="_blank">
+                    <i class="fab fa-discord"></i>
+                    <span>daytwinking._</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div>Made with <span style="color: var(--border);">♥</span> by Enigmatikk</div>
+        <div class="social-links">
+            <a href="https://twitter.com/enigmatikk_" target="_blank" title="Twitter">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="https://github.com/enigmatikk" target="_blank" title="GitHub">
+                <i class="fa-brands fa-github"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        function createDots() {
+            for (let i = 0; i < 20; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'decorative-dot';
+                dot.style.left = `${Math.random() * 100}vw`;
+                dot.style.top = `${Math.random() * 100}vh`;
+                dot.style.animationDelay = `${Math.random() * 2}s`;
+                document.body.appendChild(dot);
+            }
+        }
+        createDots();
+    </script>
+</body>
+</html>
