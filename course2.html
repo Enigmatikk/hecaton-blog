@@ -778,7 +778,7 @@
 <p>This is the second part of my Reverse Engineering course for complete beginners. I willteach you how to analyze strings in a binary and track where they are used. This is an important skill in reverse engineering because many programs store useful information like passwords, debug messages or encryption keys as strings inside the binary.</p>
 <p>We will also introduce cross-referencing (XREFs) to find out which functions use specific strings, helping us navigate the binary efficiently, so sit tight and enjoy the course.</p>
 
-<h2 style="color: var(--highlight);">Step 1: Importing & Analyzing the Binary</h2>
+<h3 style="color: var(--highlight);">Step 1: Importing & Analyzing the Binary</h2>
 <p>Just like in lesson 1, we will use Ghidra to analyze a new binary (day2.exe)</p>
 <ul>
     <li>Open Ghidra and create a new project</li>
@@ -786,7 +786,7 @@
     <li>Double-click the file to open it in CodeBrowser and click Yes to start the analysis.</li>
 </ul>
 
-<h2 style="color: var(--highlight);">Extracting Strings from the Binary</h2>
+<h3 style="color: var(--highlight);">Step 2: Extracting Strings from the Binary</h2>
 <h3 style="color: var(--accent); margin: 20px 0 10px;">Why are strings important?</h3>
 <p>Strings in a binary often contain:</p>
 <ul>
@@ -805,7 +805,7 @@
 <div class="code-block">
     <pre><code>Tip: You can filter the strings by typing keywords like "password" or "secret" in the search bar.</code></pre>
 </div>
-<h2 style="color: var(--highlight);">Step 3:Finding where a string is used(Cross-Referencing)</h2>
+<h3 style="color: var(--highlight);">Step 3:Finding where a string is used(Cross-Referencing)</h2>
 <p>Once we find an interesting string, we need to figure out where in the code it is being used.</p>
 <ul>
     <li>Right-click on the string and select "Show References"(XREFs)</li>
@@ -815,13 +815,13 @@
 
 <h3 style="color: var(--accent); margin: 20px 0 10px;">Example: Finding a Password Check</h3>
 <p>If we find a string like "Enter Password:", we can check which function uses it. Usually the same function will contain password comparison logic like strcmp</p>
-<h2 style="color: var(--highlight);">Step 4: Understanding the Code Flow</h2>
+<h3 style="color: var(--highlight);">Step 4: Understanding the Code Flow</h2>
 <p>Affter finding the function that uses our target string, we can use:</p>
 <ul>
     <li>Decompiled View (Right Panel) to see a C-like representation of the function</li>
     <li>Disassembly View (Listing Panel) to see the raw assembly code</li>   
 </ul>
-<h2 style="color: var(--highlight);">Step 5: Bypassing a Password Check (Patching)</h2>
+<h3 style="color: var(--highlight);">Step 5: Bypassing a Password Check (Patching)</h2>
 <p>If the program checks a hardcoded password, we can bypass the check by modifying the binary.</p>
 <ul>
     <li>Locate the strcmp function in the disassembly</li>
