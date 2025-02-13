@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hecaton - Reverse Engineering & Cyber Stuff</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
+        <style>
         :root {
             --bg: #1a1625;
             --terminal: #251b32;
@@ -169,7 +161,53 @@
         .post-content {
             position: relative;
         }
+        .github-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #2a2139, #372d4b);
+            color: var(--text);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            border: 1px dashed var(--border);
+            margin-top: 20px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
 
+        .github-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 166, 230, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .github-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px var(--glow);
+            border-color: var(--accent);
+        }
+
+        .github-button:hover::before {
+            transform: translateX(100%);
+        }
+
+        .github-button i {
+            font-size: 1.2em;
+            color: var(--accent);
+        }
+
+        .github-button span {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
         .post-content img {
             width: 100%;
             height: 300px;
@@ -276,6 +314,7 @@
             background: var(--border);
             color: var(--terminal);
         }
+        /* Navigation Menu */
         .nav-menu {
             display: flex;
             justify-content: center;
@@ -298,6 +337,7 @@
             transform: translateY(-2px);
         }
 
+        /* Search Bar */
         .search-container {
             margin: 0 auto 40px auto;
             max-width: 600px;
@@ -320,6 +360,7 @@
             box-shadow: 0 0 15px var(--glow);
         }
 
+        /* Post Updates */
         .post-header {
             display: flex;
             justify-content: space-between;
@@ -350,6 +391,7 @@
             border: 1px dashed var(--border);
         }
 
+        /* Decorative Elements */
         .decorative-dot {
             position: fixed;
             width: 4px;
@@ -366,6 +408,7 @@
             50% { transform: translateY(-10px); }
         }
 
+        /* Header Enhancements */
         header h1::after {
             content: '✧';
             position: absolute;
@@ -564,7 +607,144 @@
             transform: none;
         }
     }
-        </style>
+        .post-full {
+            background: rgba(37, 27, 50, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px dashed var(--border);
+            margin-bottom: 40px;
+        }
+
+        .post-title {
+            font-size: 2.5em;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .post-meta-full {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        .post-section {
+            margin: 40px 0;
+        }
+
+        .post-section h2 {
+            color: var(--highlight);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .post-section h2::before {
+            content: '✧';
+            color: var(--border);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            margin: 15px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '❯';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .code-block {
+            background: var(--terminal);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+		/* Base link styles */
+		a {
+			color: #BE9AFA; /* Light Purple */
+			text-decoration: none;
+			font-weight: 600;
+			transition: all 0.3s ease; /* Smooth transition */
+		}
+
+		/* Link hover effect */
+		a:hover {
+			color: #DB8EC8; /* Pink */
+			text-decoration: underline;
+			transform: scale(1.1); /* Slightly enlarge the link on hover */
+		}
+
+		/* Active link state (when clicked) */
+		a:active {
+			color: #D9A0F5; /* Lighter purple for active state */
+		}
+
+		/* Optional: Focus state for accessibility */
+		a:focus {
+			outline: 3px solid #DB8EC8;
+			outline-offset: 2px;
+		}
+
+		/* Style for visited links */
+		a:visited {
+			color: #C5A7E3; /* Muted purple for visited links */
+		}
+
+		/* Bonus: Add a little animation for hover */
+		a:hover {
+			animation: pulse 0.5s ease-in-out infinite;
+		}
+
+		/* Animation for the hover pulse effect */
+		@keyframes pulse {
+			0% {
+				transform: scale(1.1);
+				opacity: 1;
+			}
+			50% {
+				transform: scale(1.2);
+				opacity: 0.8;
+			}
+			100% {
+				transform: scale(1.1);
+				opacity: 1;
+			}
+		}
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            margin-bottom: 30px;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post | Hecaton</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -577,64 +757,89 @@
             <a href="contact.html">✧ Contact</a>
         </nav>
     </header>
-    
-    
+
     <main>
-        <article class="post">
-            <div class="post-header">
-                <div class="post-meta">
-                    <div class="post-date">January 13, 2025</div>
-                </div>
-            </div>
-            <a href="course2.html" style="text-decoration: none; color: inherit;">
-                <div class="post-content">
-                    <img src="course2.png" alt="inside the binary">
-                    <div class="post-tags">
-                        <span class="tag">Course</span>
-                        <span class="tag">Reverse Engineering</span>
-                        <span class="tag">Beginner</span>
+
+                <article class="post-full">
+                    <h1 class="post-title">Inside the Binary - 2</h1>
+                    
+                    <div class="post-meta-full">
+                        <div class="post-date">February 13, 2025</div>
+                        <div class="post-tags">
+                            <span class="tag">Course</span>
+<span class="tag">Reverse Engineering</span>
+<span class="tag">Beginner</span>
+                        </div>
                     </div>
-					<p>Inside the Binary is a free course made to teach beginners how to reverse engineer with open source tools</p>
-                </div>
-            </a>
-        </article>        
-        <article class="post">
-            <div class="post-header">
-                <div class="post-meta">
-                    <div class="post-date">January 4, 2025</div>
-                </div>
-            </div>
-            <a href="course1.html" style="text-decoration: none; color: inherit;">
-                <div class="post-content">
-                    <img src="course1.png" alt="inside the binary">
-                    <div class="post-tags">
-                        <span class="tag">Course</span>
-                        <span class="tag">Reverse Engineering</span>
-                        <span class="tag">Beginner</span>
+
+                    <div class="post-section">
+                        <img src="images/course/day2/day2.png" alt="Image" style="width: 100%; border-radius: 12px; margin: 20px 0;">
+<h2 style="color: var(--highlight);">Overview</h2>
+<p>This is the second part of my Reverse Engineering course for complete beginners. I willteach you how to analyze strings in a binary and track where they are used. This is an important skill in reverse engineering because many programs store useful information like passwords, debug messages or encryption keys as strings inside the binary.</p>
+<p>We will also introduce cross-referencing (XREFs) to find out which functions use specific strings, helping us navigate the binary efficiently, so sit tight and enjoy the course.</p>
+
+<h2 style="color: var(--highlight);">Step 1: Importing & Analyzing the Binary</h2>
+<p>Just like in lesson 1, we will use Ghidra to analyze a new binary (day2.exe)</p>
+<ul>
+    <li>Open Ghidra and create a new project</li>
+    <li>Import day2.exe into the project</li>
+    <li>Double-click the file to open it in CodeBrowser and click Yes to start the analysis.</li>
+</ul>
+
+<h2 style="color: var(--highlight);">Extracting Strings from the Binary</h2>
+<h3 style="color: var(--accent); margin: 20px 0 10px;">Why are strings important?</h3>
+<p>Strings in a binary often contain:</p>
+<ul>
+    <li>Error messages</li>
+    <li>Debug logs</li>
+    <li>Secret keys</li>
+    <li>Function names</li>
+    <li>Passwords</li>
+</ul>
+<h3 style="color: var(--accent); margin: 20px 0 10px;">How to find strings in Ghidra</h3>
+<ul>
+    <li>Open Window -> Defined Strings</li>
+    <li>This will display a list of all strings found in the binary</li>
+    <li>Look for anything suspicious or interesting(e.g "Access Denied" or "Enter Password")</li>
+</ul>
+<div class="code-block">
+    <pre><code>Tip: You can filter the strings by typing keywords like "password" or "secret" in the search bar.</code></pre>
+</div>
+<h2 style="color: var(--highlight);">Step 3:Finding where a string is used(Cross-Referencing)</h2>
+<p>Once we find an interesting string, we need to figure out where in the code it is being used.</p>
+<ul>
+    <li>Right-click on the string and select "Show References"(XREFs)</li>
+    <li>This will display a list of locations in the binary where this string is used</li>
+    <li>Double-click on one of the references to jump to the function that accesses the string</li>
+</ul>
+
+<h3 style="color: var(--accent); margin: 20px 0 10px;">Example: Finding a Password Check</h3>
+<p>If we find a string like "Enter Password:", we can check which function uses it. Usually the same function will contain password comparison logic like strcmp</p>
+<h2 style="color: var(--highlight);">Step 4: Understanding the Code Flow</h2>
+<p>Affter finding the function that uses our target string, we can use:</p>
+<ul>
+    <li>Decompiled View (Right Panel) to see a C-like representation of the function</li>
+    <li>Disassembly View (Listing Panel) to see the raw assembly code</li>   
+</ul>
+<h2 style="color: var(--highlight);">Step 5: Bypassing a Password Check (Patching)</h2>
+<p>If the program checks a hardcoded password, we can bypass the check by modifying the binary.</p>
+<ul>
+    <li>Locate the strcmp function in the disassembly</li>
+    <li>Change the comparison instruction to always return 0 (meaning the password is always correct)</li>
+    <li>Right-click the instruction and select Path Instruction</li>
+</ul>
+
+
+<h2 style="color: var(--highlight);">Conclusion</h2>
+<ul>
+    <li>Strings are the easiest way to find useful data in a binary</li>
+    <li>Cross-referencing (XREFs) helps us track where important data is used</li>
+    <li>Patching allows us to modify a binary to bypass restrictions</li>
+</ul>
                     </div>
-					<p>Inside the Binary is a free course made to teach beginners how to reverse engineer with open source tools</p>
-                </div>
-            </a>
-        </article>	
-        <article class="post">
-            <div class="post-header">
-                <div class="post-meta">
-                    <div class="post-date">January 29, 2025</div>
-                </div>
-            </div>
-            <a href="thanatos.html" style="text-decoration: none; color: inherit;">
-                <div class="post-content">
-                    <img src="thanatos.png" alt="Thanatos - Memory Forensics Tool">
-                    <div class="post-tags">
-                        <span class="tag">Memory Forensics</span>
-                        <span class="tag">Reverse Engineering</span>
-                        <span class="tag">Tools</span>
-                    </div>
-                    <p> Thanatos is a memory analysis and process inspection tool designed for Windows systems. Built with Rust for performance and safety, it provides a modern interface for analyzing running processes and their memory regions.</p>
-                </div>
-            </a>
-        </article>
-    </main>
+                </article>
+                
+</main>
 
     <footer>
         <div>Made with <span style="color: var(--border);">♥</span> by Enigmatikk</div>
